@@ -1,0 +1,41 @@
+# remove val in-place.
+# order need not maintained. (if order needs to be maintained - unidirection)
+# return other element count.
+
+# final array expectation - only keep not val at left.
+# two pointer - inward - left finds val, right finds non val from end.
+# end when both meet.
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        r = len(nums)-1
+        if r == -1: 
+            return 0
+        l = 0
+        # not done till the pointers meet.
+        while l < r:
+            # find the val
+            while l < r and nums[l] != val:
+                l += 1
+            # find the non val
+            while r > l and nums[r] == val:
+                r -= 1
+            # if pointers didnt meet
+            if r > l:
+                #removes val
+                nums[l] = nums[r]
+                r -= 1
+            # if met, end
+            else:
+                if nums[l] == val:
+                    return l
+                else:
+                    return l + 1
+        # met
+        if nums[l] == val:
+            return l
+        else:
+            return l + 1
+
+
+        
