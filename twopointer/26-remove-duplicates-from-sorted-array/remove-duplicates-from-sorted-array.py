@@ -15,10 +15,9 @@ class Solution:
             # all elements are unique
             if p == len(nums):
                 return p
-            
-            if nums[i] != nums[p]:
+            if nums[i] > nums[p-1]:
                 nums[p] = nums[i]
-        # handles moving position for the last value.
+        # # handles moving position for the last value.
         while p < len(nums) and nums[p] > nums[p-1]:
                 p += 1
         return p
